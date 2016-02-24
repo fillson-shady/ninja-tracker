@@ -1,0 +1,38 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.todoapp {
+    margin: 40px 0 40px 0;
+}
+
+.new-todo, .edit {
+    font-size: 24px;
+}
+
+.toggle-all:before {
+    font-size: 22px;
+}
+
+.todo-list li {
+    font-size: 24px;
+}
+
+.todo-list li .destroyBtn {
+    right: 10px;
+    bottom: -5px;
+    font-size: 30px;
+}
+
+.todo-list li .editBtn {
+    right: 70px;
+    bottom: -5px;
+    font-size: 30px;
+}
+
+.todo-list li.editing .edit {
+    width: 506px;
+    padding: 13px 17px 12px 17px;
+    margin: 0 0 0 43px;
+}

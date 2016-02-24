@@ -1,0 +1,39 @@
+<#import "../layout/layout.ftl.html" as layout> <@layout.mainLayout>
+
+    <div class="container">
+
+        <br/>
+        <div class="row">
+            <div class="col-lg-8">
+
+                <form action="${reverseRoute("controllers.ApplicationController", "createUserLinkPost")}" method="post" class="form-horizontal" role="form">
+
+                    <b>Синхронизация с другим пользователем:</b>
+
+                    <div id="email-fg" class="form-group">
+                        <div class="col-lg-6">
+                            <input type="text" id="linkEmail" name="linkEmail" class="form-control" placeholder="Email пользователя">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <input type="password" class="form-control" name="linkPassword" id="linkPassword" placeholder="Пароль пользователя">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success pull-left">Синхронизавать</button>
+                </form>
+
+            </div>
+        </div>
+        <br/><br/>
+
+        <b>Созданные синхронизации</b>
+        <#list links as link>
+            <p>${link}</p>
+        </#list>
+
+    </div>
+
+</@layout.mainLayout>

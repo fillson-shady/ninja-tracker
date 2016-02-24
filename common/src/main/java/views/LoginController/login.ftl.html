@@ -1,0 +1,81 @@
+<#import "../layout/layout.ftl.html" as layout> <@layout.mainLayout>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8">
+
+                <form action="${reverseRoute("controllers.LoginController", "loginPost")}" method="post" class="form-horizontal" role="form">
+
+                    <h1>Вход</h1>
+
+                    <p>Введите Ваши реквизиты для входа в систему или регистрации:</p>
+
+                    <div id="email-fg" class="form-group">
+                        <div class="col-lg-6">
+                            <input id="email" name="email" class="form-control" placeholder="Email" type="email" x-autocompletetype="email" value="${(flash.email)!""}">
+                            <span id="email-free-hb" class="help-block hidden">Данный email доступен для регистрации</span>
+                            <span id="email-invalid-hb" class="help-block hidden">Неверный формат email</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <input id="password" class="form-control" name="password" placeholder="Пароль" type="password">
+                        </div>
+                    </div>
+
+                    <div id="name-fg" class="form-group hidden">
+                        <div class="col-lg-6">
+                            <input id="name" class="form-control" name="name" placeholder="Имя пользователя" type="text">
+                            <span class="help-block hidden">Для завершения регистрации укажите имя пользователя</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success pull-left">Войти</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</@layout.mainLayout>
+
+<script>
+
+    var validEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    var $email = $("#email");
+    var $submit = $(".btn");
+    var $emailFg = $("#email-fg");
+    var $nameFg = $("#name-fg");
+    var $emailFree = $("#email-free-hb");
+    var $emailInvalid = $("#email-invalid-hb");
+
+    $email.on("blur", function() {
+
+        var email = $email.val();
+
+        if (validEmail.test(email)) {
+            $.get("checkFreeEmail", { email: email }, function(data) {
+                $emailInvalid.addClass("hidden");
+                if(data.value) {
+                    $submit.html("Зарегистрироваться");
+                    $emailFree.removeClass("hidden");
+                    $nameFg.removeClass("hidden");
+                    $emailFg.removeClass("has-error");
+                    $emailFg.addClass("has-success");
+                } else {
+                    $submit.html("Войти");
+                    $emailFree.addClass("hidden");
+                    $nameFg.addClass("hidden");
+                }
+            });
+        } else {
+            $emailInvalid.removeClass("hidden");
+            $emailFree.addClass("hidden");
+            $emailFg.removeClass("has-success");
+            $emailFg.addClass("has-error");
+            $nameFg.addClass("hidden");
+        }
+    });
+</script>

@@ -1,0 +1,54 @@
+body {
+    padding-top: 40px;
+}
+
+.container {
+    padding-left: 10px;
+}
+
+.alert {
+    margin-top: 20px;
+}
+
+.todoapp {
+    margin: 10px 0 40px 0;
+}
+
+.new-todo, .edit {
+    font-size: 20px;
+}
+
+.toggle-all {
+    padding-top: 5px !important;
+}
+
+.toggle-all:before {
+    font-size: 28px;
+}
+
+.todo-list li {
+    font-size: 16px;
+}
+
+.todo-list li .destroyBtn {
+    right: 0;
+    bottom: -10px;
+    font-size: 20px;
+}
+
+.todo-list li .editBtn {
+    right: 30px;
+    bottom: -10px;
+    font-size: 20px;
+}
+
+.new-todo {
+    padding: 9px 16px 9px 60px;
+}
+
+.todo-list li.editing .edit {
+    font-size: 18px;
+    width: 280px;
+    margin-left: 15px;
+    /*margin: 0 0 0 43px;*/
+}

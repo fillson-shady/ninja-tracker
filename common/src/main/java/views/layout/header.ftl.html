@@ -1,0 +1,26 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container container-header">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Ninja tracker</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/todo" class="active">Дела</a></li>
+                <li><a href="/expenses">Расходы</a></li>
+            </ul>
+            <ul class="navbar-right nav navbar-nav">
+                <#if (session.name)??>
+                    <li><a href="${reverseRoute("controllers.ApplicationController", "userProfile")}">${session.name}</a></li>
+                    <li><a href="${reverseRoute("controllers.LoginController", "logout")}">Выйти</a></li>
+                <#else>
+                    <li><a href="${reverseRoute("controllers.LoginController", "login")}" id="login">Вход/регистрация</a></li>
+                </#if>
+            </ul>
+        </div>
+    </div>
+</div>
